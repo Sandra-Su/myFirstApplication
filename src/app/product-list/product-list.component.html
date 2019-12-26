@@ -3,7 +3,14 @@
 <!--Para mostrar una lista de productos, para iterar sobre cada elemento de la lista de productos predefinidad usamos la directiva ngfor-->
 <div *ngFor="let product of products"><!--Products es una variable que aparece en ts-->
   <h3>
-    {{product.name}} <!--Usamos la interpolacion para mostrar los nombles-->
+  {{product.name}} <!--Usamos la interpolacion para mostrar los nombles-->
+  </h3>
+</div>
+
+<h2><b>EN LO SIGUIENTE USAMOS EL ENLACE PROPIEDAD</b></h2>
+
+<div *ngFor="let product of products">
+  <h3>
     <a [title]="product.name + ' details'"> <!--Para hacer que cada nombre de producto sea un enlace a los detalles del producto, agregue el elemento y establezca su título para que sea el nombre del producto utilizando la sintaxis de enlace de propiedad -->
       {{product.name}}
     </a>
@@ -21,6 +28,16 @@
   (notify)="onNotify()"><!-- Pasamos el producto actual como entrada al componente utilizando el enlace de propiedad.--->
 </app-product-alerts>
   
+</div>
+<h2><b>EMPIEZA EL ENRUTAMIENTO</b></h2>
+<div *ngFor="let product of products; index as productId">
+
+  <h3>
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]"><!--La directiva routerLink define como navega el usuario para la ruta (o URL) declarada en la plantilla del componente.-->
+      {{ product.name }}
+    </a>
+  </h3>
+<!-- . . . -->
 </div>
 
 
