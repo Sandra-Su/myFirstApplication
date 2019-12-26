@@ -1,0 +1,32 @@
+<h2>Products</h2>
+
+<!--Para mostrar una lista de productos, para iterar sobre cada elemento de la lista de productos predefinidad usamos la directiva ngfor-->
+<div *ngFor="let product of products"><!--Products es una variable que aparece en ts-->
+  <h3>
+    {{product.name}} <!--Usamos la interpolacion para mostrar los nombles-->
+    <a [title]="product.name + ' details'"> <!--Para hacer que cada nombre de producto sea un enlace a los detalles del producto, agregue el elemento y establezca su título para que sea el nombre del producto utilizando la sintaxis de enlace de propiedad -->
+      {{product.name}}
+    </a>
+  </h3>
+  <p *ngIf="product.description"> <!--usamos una directiva para que Angular solo cree el elemento si el producto actual tiene una descripción--->
+    Description: {{ product.description }}
+  </p>
+
+  <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts
+  [product]="product"
+  (notify)="onNotify()"><!-- Pasamos el producto actual como entrada al componente utilizando el enlace de propiedad.--->
+</app-product-alerts>
+  
+</div>
+
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
